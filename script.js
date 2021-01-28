@@ -56,12 +56,12 @@ var basemaps = {
         format: 'image/png'
       }),
 	
-	'katastr': L.tileLayer.wms('http://services.cuzk.cz/wms/wms.asp?', {
+	'katastr': L.tileLayer.wms('https://services.cuzk.cz/wms/wms.asp?', {
 		layers: 'DEF_PARCELY,polygony_parcel',	
 		
     }),    
     
-    'Katastr_clickable': L.tileLayer.betterWms('http://services.cuzk.cz/wms/wms.asp?', {
+    'Katastr_clickable': L.tileLayer.betterWms('https://services.cuzk.cz/wms/wms.asp?', {
         layers: 'polygony_parcel',
         transparent: true,
         format: 'image/png'
