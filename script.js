@@ -6,8 +6,6 @@ const URL_GMAPS = 'https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&scale=2';
 
 const OSM = L.tileLayer(URL_OSM);
 const GMAPS = L.tileLayer(URL_GMAPS, {
-	// subdomény dlaždic Google Maps,
-	// mt0.google.com/…, mt1.google.com/…, mt2.google.com/…, mt3.google.com/…
 	subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 });
 
@@ -33,13 +31,16 @@ var basemaps = {
 		layers: 'GR_ORTFOTORGB'
 	}),
 
-	'puda100': L.tileLayer.wms('https://mapy.geology.cz/arcgis/services/Inspire/Pudni_typy/MapServer/WMSServer?', {
-		layers: '0',	
-	}),
 	
 	'puda50': L.tileLayer.wms('https://mapy.geology.cz/arcgis/services/Pudy/pudni_typy50/MapServer/WmsServer?', {
 		layers: '0',	
-	}),
+    }),
+    
+    'Půda_clickable': L.tileLayer.betterWms('https://mapy.geology.cz/arcgis/services/Pudy/pudni_typy50/MapServer/WmsServer?', {
+        layers: '0',
+        transparent: true,
+        format: 'image/png'
+      }),
 
 	'srážky': L.tileLayer.wms('https://ags.vuv.cz/arcgis/services/sucho/srazka/MapServer/WmsServer?', {
 		layers: '3',	
@@ -47,21 +48,25 @@ var basemaps = {
 
 	'teplota': L.tileLayer.wms('https://ags.vuv.cz/arcgis/services/sucho/teplota/MapServer/WmsServer?', {
 		layers: '1',	
+    }),
 
-	}),
+    'Teplota_clickable': L.tileLayer.betterWms('https://ags.vuv.cz/arcgis/services/sucho/teplota/MapServer/WmsServer?', {
+        layers: '1',
+        transparent: true,
+        format: 'image/png'
+      }),
 	
 	'katastr': L.tileLayer.wms('http://services.cuzk.cz/wms/wms.asp?', {
 		layers: 'DEF_PARCELY,polygony_parcel',	
 		
-	}),
-
-
-
-
-	
+    }),    
     
+    'Katastr_clickable': L.tileLayer.betterWms('http://services.cuzk.cz/wms/wms.asp?', {
+        layers: 'polygony_parcel',
+        transparent: true,
+        format: 'image/png'
+      }),
 };
-
 
 const BASE_LAYERS = {
 	'OpenStreetMap': OSM,
